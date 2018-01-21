@@ -48,3 +48,51 @@ const partner = {
 /* 
   Start writing function here
 */
+
+function checkSameLocation(profileA, profileB) {
+  return profileA.location.city === profileB.location.city;
+}
+
+function checkSameCommunity(profileA, profileB) {
+  return profileA.community === profileB.community;
+}
+
+function checkIsUnmarried(profileA, profileB) {
+  return profileA.neverMarried === profileB.neverMarried;
+}
+
+function checkDiet(profileA, profileB) {
+  return profileA.cuisine === profileB.cuisine;
+}
+
+function createStarters(currentUser, partner) {
+  const starters = [];
+
+  if (checkSameLocation(currentUser, partner)) {
+    starters.push(`You both live in ${currentUser.location.city}`);
+  }
+
+  if (checkSameCommunity(currentUser, partner)) {
+    starters.push(`she is from the ${currentUser.community} community as well`);
+  }
+  
+  if (checkDiet(currentUser, partner)) {
+    starters.push(`You both prefer ${currentUser.cuisine} diet`);
+  }
+  
+   if (checkIsUnmarried(currentUser, partner)) {
+     if(currentUser.neverMarried){
+        starters.push(`You both are Never Married`);
+     }else{
+       starters.push(`You both are divorcee`); 
+     }
+  }
+  
+  return starters;
+}
+
+const starters = createStarters(me, partner);
+
+starters.forEach(starter => {
+  console.log(starter);
+});
