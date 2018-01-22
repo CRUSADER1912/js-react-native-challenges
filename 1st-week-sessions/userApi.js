@@ -54,11 +54,18 @@ console.log('----------------------------------');
 console.log(profiles);
 console.log('----------------------------------');
 console.log(firstProfile); 
-
+console.log('----------------------------------');
 /*
   1.5 Paginate the api results in sets of variable amounts
   Example: Paginate(profiles, 2, 5)
   Expected output: An array of profiles containing items sliced from page 2 to page 3 containing 5 items
 */
-
+function getProfilePaginatedList(profiles, splitValue){
+var paginatedData = [];
+  while (profiles.length) {
+    paginatedData.push(profiles.splice(0, splitValue));
+  }
+  return paginatedData;
+};
+console.log(getProfilePaginatedList(profiles, 5)[2]);
 console.dir();
