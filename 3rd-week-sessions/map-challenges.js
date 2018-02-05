@@ -18,7 +18,11 @@ const shaadiData = require("./data/shaadiData.json");
   Expected const profileNameArrays = ['fullnameOne', 'etc', 'etc'] <-- array of strings fullnames
 */
 
-console.log(shaadiData);
+const fullName = profileData.map(data => {
+  return data.name.title + " " + data.name.first + " " + data.name.last;
+})
+
+console.log(fullName)
 
 /*
   Challenge 1.2 - write a function that returns an array that has users grouped by nationality
@@ -32,7 +36,24 @@ console.log(shaadiData);
   Note: This might feel super hard. Don't get stuck on it. Try it later
 */
 
-console.log();
+function groupBy(list, keyGetter) {
+    const map = new Map();
+    list.forEach((item) => {
+        const key = keyGetter(item);
+        const collection = map.get(key);
+        if (!collection) {
+            map.set(key, [item]);
+        } else {
+            collection.push(item);
+        }
+    });
+    return map;
+}
+
+
+const grouped = groupBy(profileData, data => data.nat);
+
+console.log(grouped.get("AU"))
 
 /*
   Challenge 1.3 - write a function that returns a transformed array of profiles combined with photo data
