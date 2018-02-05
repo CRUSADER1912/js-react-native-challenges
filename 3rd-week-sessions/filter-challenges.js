@@ -18,7 +18,14 @@ const profiles = require("./data/shaadiData.json");
   Expected const brazilUserProfiles = []
 */
 
-console.log();
+const filter1 = shaadiData.data.filter(data => {
+  if(data.mini_profile.marital_status === "Never Married"){
+    return true;
+  }
+})
+
+
+console.log(filter1)
 
 /*
   Challenge 1.2 - write a function that gets only the 
@@ -39,7 +46,15 @@ console.log();
   Expected const collegeUserProfiles = []
 */
 
-console.log();
+const filter2 = shaadiData.data.filter(data => {
+  if(data.education.valid_college_1 != "No" ||
+    data.education.valid_college_2 != "No"){
+      return true;
+  }
+})
+
+
+console.log(filter2)
 
 /*
   Challenge 1.3 - write a function that gets only the 
@@ -50,4 +65,11 @@ console.log();
 
 */
 
-console.log();
+const filter3 = shaadiData.data.filter(data => {
+  if(Object.keys(data.photo_details.photos).length > 1){
+    return true;
+  }
+})
+
+
+console.log(filter3)
