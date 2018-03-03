@@ -1,4 +1,4 @@
-const redux = require("redux");
+const { createStore } = require("redux");
 
 const initialState = {
   profile: {
@@ -33,24 +33,48 @@ const initialState = {
   ]
 };
 
-/* 
+/*
 create an action to upgrade the user's current plan.
 */
+const UPGRADE_PLAN = "UPGRADE_PLAN";
 
-/* 
+const upgrade_plan = () => {
+  return {
+    type: UPGRADE_PLAN,
+    payload: "gold"
+  };
+};
+
+/*
 Write a reducer to handle the above action
 Make sure to update both the plan and set the upgraded flag to true
 */
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case UPGRADE_PLAN:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          currentPlan: action.payload,
+          upgraded: true
+        }
+      };
+    default:
+      return state;
+  }
+}
 
 /* create a store with the initial data above and the action */
-
-/* 
+const store = createStore(reducer);
+/*
   Fire the action
 */
+store.dispatch(upgrade_plan());
 
-/* 
+/*
 expected output: modified nextState
-the store via store.getState() 
+the store via store.getState()
 */
 
-console.log(`Did user upgrade plan?`);
+console.log(store.getState());

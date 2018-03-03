@@ -42,27 +42,27 @@ const initialState = {
   ]
 };
 
-/* 
+/*
 create an toggle action to toggle the can_chat  flag
 You should be able to turn the flag from true to false to true again etc.
 */
 
-/* 
+/*
 Write a reducer to handle the above action
 Make sure to update immutably
 */
 
-/* 
+/*
   create a store with the initial data above and the action
 */
 
-/* 
+/*
   Fire the action
 */
 
-/* 
+/*
 expected output: modified nextState
-the store via store.getState() 
+the store via store.getState()
 */
 
 console.log(`what is the current chat status?`);

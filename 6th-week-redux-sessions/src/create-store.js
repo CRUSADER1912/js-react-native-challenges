@@ -1,4 +1,4 @@
-const redux = require("redux");
+const { createStore } = require("redux");
 
 const initialState = {
   profile: {
@@ -33,11 +33,15 @@ const initialState = {
   ]
 };
 
+function reducer(state = initialState, action) {
+  return state;
+}
+
 /* create a store with the initial data above */
+const store = createStore(reducer);
 
-/* 
-expected output: unmodified intitial data from 
-the store via store.getState() 
+/*
+expected output: unmodified intitial data from
+the store via store.getState()
 */
-
-console.log(`Did you create a new store? Replace this message then`);
+console.log(store.getState());

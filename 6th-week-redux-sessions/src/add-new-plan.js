@@ -1,4 +1,4 @@
-const redux = require("redux");
+const { createStore } = require("redux");
 
 const initialState = {
   profile: {
@@ -33,25 +33,49 @@ const initialState = {
   ]
 };
 
-/* 
+/*
 create an action to add a new plan called "valentine special".
 You can set the id: "33453ttt" and the cost: 1500
 */
+const VALENTINE_SPECIAL = "VALENTINE_SPECIAL";
 
-/* 
+const addNewPlan = () => {
+  return {
+    type: VALENTINE_SPECIAL,
+    payload: {
+      id: "33453ttt",
+      name: "valentine special",
+      cost: 1500
+    }
+  };
+};
+
+/*
 Write a reducer to handle the above action
 Make sure to update the plans array immutably
 */
-
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case VALENTINE_SPECIAL:
+      return {
+        ...state,
+        plans: [...state.plans, action.payload]
+      };
+    default:
+      return state;
+  }
+}
 /* create a store with the initial data above and the action */
+const store = createStore(reducer);
 
-/* 
+/*
   Fire the action
 */
+store.dispatch(addNewPlan());
 
-/* 
+/*
 expected output: modified nextState
-the store via store.getState() 
+the store via store.getState()
 */
 
-console.log(`Did you add a new plan?`);
+console.log(store.getState());
