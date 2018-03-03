@@ -40,4 +40,4 @@ expected output: unmodified intitial data from
 the store via store.getState() 
 */
 
-console.log();
+console.log(`Did you create a new store? Replace this message then`);

@@ -65,4 +65,4 @@ expected output: modified nextState
 the store via store.getState() 
 */
 
-console.log();
+console.log(`what is the current chat status?`);
